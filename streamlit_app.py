@@ -10,7 +10,7 @@ from langchain_core.messages import SystemMessage
 
 @st.cache_resource
 def load_data(vector_store_dir: str="data/IRM-faiss"):
-    db = FAISS.load_local(vector_store_dir, AzureOpenAIEmbeddings()) # allow_dangerous_deserialization = True)  # when push to github, should add the "allow_dangerous_deserialization = True"
+    db = FAISS.load_local(vector_store_dir, AzureOpenAIEmbeddings(), allow_dangerous_deserialization = True)  # when push to github, should add the "allow_dangerous_deserialization = True"
     llm = AzureChatOpenAI(model_name="gpt-35-turbo", temperature=0.5)
     
     print("Loading data...")
